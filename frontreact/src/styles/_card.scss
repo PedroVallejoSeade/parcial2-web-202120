@@ -11,7 +11,17 @@
   cursor: pointer;
   border: 1px solid $isis3710-grey-10;
 
-  &.inactive {
+  &-inactive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 18rem;
+    background-color: $isis3710-white;
+    color: $isis3710-black;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid $isis3710-grey-10;
     filter: brightness(0.8) saturate(0) contrast(1.5) blur(1px);
     cursor: not-allowed;
   }

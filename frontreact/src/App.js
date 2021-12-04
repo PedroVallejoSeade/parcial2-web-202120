@@ -16,10 +16,19 @@ function App() {
     setSearchState({ searchKey: query });
   };
 
+  const changeLanguage = (language) => {
+    if(language === 'es') {
+      setLanguage(LOCALES.SPANISH)
+    }
+    else {
+      setLanguage(LOCALES.ENGLISH)
+    }
+  }
+
   return (
     <IntlProvider locale={language} messages={messages[language]}>
       <header>
-        <NavBar onSearchKeyChange={setSearchkey} />
+        <NavBar onSearchKeyChange={setSearchkey} setLanguage = {changeLanguage}/>
       </header>
       <main>
         <Routes>
@@ -28,7 +37,7 @@ function App() {
             path='/'
             element={<Home searchKey={searchState.searchKey} />}
           />
-          <Route exact path='/report' element={<Report />} />
+          <Route exact path='/report' element={<Report searchKey={searchState.searchKey}/>} />
         </Routes>
       </main>
     </IntlProvider>

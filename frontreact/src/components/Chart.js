@@ -26,6 +26,25 @@ export const Chart = ({ width = 600, height = 600, data }) => {
       .padding(0.1);
 
     // Continue with implementation. Don't forget the tooltip
+    const t = d3.select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("background", "white")
+      .style("border", "solid 1px")
+
+    const rect = g.selectAll("rect").data(data);
+
+    rect.enter().append("rect")
+      .attr("class", "bar")
+      .style("fill", "blue")
+      .attr("height", e => iheight - y(e.stock))
+      .attr("width", x.bandwidth())  
+      .attr("x", e => x(e.name))
+      .attr("y", e => y(e.stock))
+
+    g.append("g")
+      .classed("y--axis", true)
+      .call(d3.axisLeft(y))
   });
 
   return (
